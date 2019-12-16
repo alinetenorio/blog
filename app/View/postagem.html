@@ -1,0 +1,22 @@
+<section>
+
+	<article>
+		<header>
+			<h1>{{titulo}}</h1>
+		</header>
+
+		<p>{{conteudo}}</p>
+
+		<br><hr><br>
+		
+		{% if comentarios == false %}
+			<p> Nenhum comentário</p>
+		{% else %}
+			{% for c in comentarios %}
+				<h3>{{c.autor}} disse:</h3>
+				<p> {{c.conteudo}}</p>
+			{% endfor %}
+		{% endif %}
+	</article>
+	
+</section>

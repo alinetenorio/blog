@@ -1,0 +1,23 @@
+<h1>Gerenciador de Conteúdo</h1>
+
+<a href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=create">Adicionar Postagem</a><br>
+<hr>
+
+<br><br>
+<table border=2>
+	<tr>
+		<th>ID</th>
+		<th>TÍTULO</th>
+		<th>ALTERAÇÃO</th>
+		<th>DELEÇÃO</th>
+	</tr>
+
+	{% for p in postagens %}
+	<tr>
+		<th>{{p.id}}</th>
+		<th>{{p.titulo}}</th>
+		<th><a href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=updateView&id={{p.id}}">ALTERAÇÃO</a></th>
+		<th><a href=#>DELEÇÃO</a></th>
+	</tr>
+	{% endfor %}
+</table>
