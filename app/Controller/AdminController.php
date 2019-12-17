@@ -9,13 +9,21 @@
 			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('admin.html');
 
-			$objPostagens = Postagem::selecionarTodos();
-
-			$parametros = array();
-			$parametros['postagens'] = $objPostagens;
+			try{
+				$objPostagens = Postagem::selecionarTodos();
+			
+				$parametros = array();
+				$parametros['postagens'] = $objPostagens;
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
+			}catch(Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
 			   
-			$conteudo = $template->render($parametros);
-			echo $conteudo;
+				
+			
 
 		}
 
@@ -25,9 +33,7 @@
 			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('create.html');
 
-			$parametros = array();
-			  
- 			$conteudo = $template->render($parametros);
+ 			$conteudo = $template->render();
 			echo $conteudo;
 		}
 
@@ -45,12 +51,12 @@
 		}
 		
 		#renderiza a página html de alteração de postagens
-		public function updateView($params){
+		public function updateView($id){
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new Twig\Environment($loader);
 			$template = $twig->load('update.html');
 			
-			$objPostagem = Postagem::retornarPostagemId($params['id']);
+			$objPostagem = Postagem::retornarPostagemId($id);
 			
 			$parametros = array();
 			$parametros['titulo'] = $objPostagem->titulo;
@@ -62,12 +68,8 @@
 			
 		}
 		
-		public function update($params){
+		public function update(){
 			try{
-				
-				$_POST['id'] = $params['id'];
-				var_dump($_POST);
-				
 				
 				Postagem::update($_POST);
 				
@@ -79,4 +81,20 @@
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=update&id="=.$id</script>';
 			}
 		}
+		
+		public function remove($id){
+			try{
+				
+				Postagem::remove($id);
+				
+				echo '<script>alert("Postagem removida");</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index"</script>';
+				
+			}catch(Exception $e){
+				echo '<script>alert("'.$e->getMessage().'");</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index</script>';
+			}
+			
+		}
+		
 	}

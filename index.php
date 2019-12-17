@@ -1,13 +1,15 @@
 <?php
 
 #Faz os imports; chama o método start() do Core; salva os outputs
-#gerados em um buffer; substitui a area dinamica do template do site
-#pelo conteudo do buffer; imprime o template modificado
+#	gerados em um buffer; substitui a area dinamica do template do site
+#	pelo conteudo do buffer; imprime o template modificado
 #index.php should be as bare-boned as you can make it because it will 
-#be re-sent every time a new page is loaded
+#	be re-sent every time a new page is loaded
 
 
 #No index.php serão feitos todos os imports dos arquivos php
+
+##VER AUTOLOAD DOC OMPOOSER
 require_once 'app/Core/Core.php';
 
 require_once 'app/Controller/HomeController.php';
@@ -19,11 +21,15 @@ require_once 'app/Model/Postagem.php';
 require_once 'app/Model/Comentario.php';
 require_once 'lib/Database/Conexao.php';
 #Composer(dependency manager) handles autoloading automatically,  the following line of code
-# will allow you to load all your referenced packages:
+# 	will allow you to load all your referenced packages:
 require_once 'vendor/autoload.php';
+
+
 
 #Lê o arquivo passado e o retorna como string
 $template = file_get_contents('app/Template/estrutura.html');
+
+
 
 #ob_start: Ativa o output buffering. Salva tudo que normalmente seria printado na tela
 #	->Start remembering everything that would normally be outputted, 

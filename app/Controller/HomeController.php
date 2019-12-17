@@ -10,19 +10,19 @@
 
 		public function index(){
 
+			#twig: template engine para php. 
+			#{{...}}: output; {%...%}: executar comandos
+			#template engine: biblioteca que combina templates e modelos de dados,
+			#são definidas partes estáticas e dinâmicas do app
+			
+			#os templates do folder View sao carregados para um environment criado
+			$loader = new \Twig\Loader\FilesystemLoader('app/View');
+			$twig = new \Twig\Environment($loader);
+			
+			$template = $twig->load('home.html');
+				
 			try{
 				$colecaoPostagem = Postagem::selecionarTodos();
-
-				#twig: template engine para php. 
-				#{{...}}: output; {%...%}: executar comandos
-				#template engine: biblioteca que combina templates e modelos de dados,
-				#são definidas partes estáticas e dinâmicas do app
-				
-				#os templates do folder View sao carregados para um environment criado
-				$loader = new \Twig\Loader\FilesystemLoader('app/View');
-				$twig = new \Twig\Environment($loader);
-				
-				$template = $twig->load('home.html');
 
 				$parametros = array();
 				$parametros['postagens'] = $colecaoPostagem;
@@ -33,6 +33,9 @@
 
 				
 			}catch(Exception $e){
+				#render: renderiza o template e mostra mensagem de erro
+				$conteudo = $template->render();
+				echo $conteudo;
 				echo $e->getMessage();
 			}
 

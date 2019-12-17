@@ -20,4 +20,23 @@
 
 			return $resultado;
 		}
+		
+		public static function  insert($params){
+			$conexao = Conexao::getConexao();
+			
+
+			$sql = "INSERT INTO comentario (autor, conteudo, id_postagem) VALUES (:nome, :comentario, :id_post)";
+			
+			$sql = $conexao->prepare($sql);
+			$sql->bindValue(':id_post', $params['id_postagem']);
+			$sql->bindValue(':nome', $params['nome']);
+			$sql->bindValue(':comentario', $params['comentario']);
+			
+			$resultado = $sql->execute();
+
+			if($resultado == false){
+				throw new Exception("Falha ao adicionar");
+			}
+			return true;
+		}
 	}

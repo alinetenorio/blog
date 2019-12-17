@@ -29,13 +29,19 @@
 			if(!class_exists($controller)){
 				$controller = 'ErroController';
 			}
+			
+			if (isset($urlGet['id']) && $urlGet['id'] != null) {
+				$id = $urlGet['id'];
+			} else {
+				$id = null;
+			}
 
-
+			
 			#call_user_func_array: Chama um callback com um array de parâmetros
 			#call_user_func_array($callback, $param_array)
 			#Call the $[pagina]Controller->acao() method with parameter: $urlGet 
 			# if $urlGet exists and it's diferent from null or null, otherwise 
-			call_user_func_array(array(new $controller, $acao), array($urlGet) ?? null);
+			call_user_func_array( array(new $controller, $acao), array('id' => $id) );
 
 			
 		}

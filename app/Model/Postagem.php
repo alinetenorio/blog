@@ -91,5 +91,25 @@
 
 			return true;
 		}
+		
+		public static function remove($id){
+			
+			
+			$conexao = Conexao::getConexao();
+			
+			$sql = "DELETE FROM postagem WHERE id = :id";
+					
+			$sql = $conexao->prepare($sql);
+			
+			$sql->bindValue(':id', $id);
+			
+			$resultado = $sql->execute();
+
+			if($resultado == false){
+				throw new Exception("Falha ao deletar");
+			}
+
+			return true;
+		}
 
 	}

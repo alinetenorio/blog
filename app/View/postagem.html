@@ -9,11 +9,23 @@
 
 		<br><hr><br>
 		
+		<form method="post" action="?pagina=postagem&todo=insertComentario">
+		
+			<h4>Adicionar Comentário:</h4><br>
+			Nome: <br><input type="text" name="nome" size="48"/><br><br>
+			Comentário: <br><textarea name="comentario" cols="50" rows="5"></textarea><br><br>
+			
+			<input type="hidden" name ="id_postagem" value="{{id_post}}" />
+			
+			<input type="submit" Value="Adicionar"/>
+		
+		</form>
+		<br>
 		{% if comentarios == false %}
 			<p> Nenhum comentário</p>
 		{% else %}
 			{% for c in comentarios %}
-				<h3>{{c.autor}} disse:</h3>
+				<h4>{{c.autor}} disse:</h4>
 				<p> {{c.conteudo}}</p>
 			{% endfor %}
 		{% endif %}
