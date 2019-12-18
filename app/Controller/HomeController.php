@@ -1,5 +1,8 @@
 <?php
 
+	namespace App\Controller;
+	use app\Model\Postagem;
+
 	#Se comunica com o model para recuperar conteúdo do banco de dados;
 	#Define em qual página esse conteúdo será exibido;
 	#Renderiza a página e dá um output no template renderizado(apenas a parte
@@ -9,7 +12,8 @@
 
 
 		public function index(){
-
+			
+			
 			#twig: template engine para php. 
 			#{{...}}: output; {%...%}: executar comandos
 			#template engine: biblioteca que combina templates e modelos de dados,
@@ -41,5 +45,8 @@
 
 
 		}
-
+		
+		public function error($data){
+			echo "Erro " . $data['errcode'];
+		}
 	}

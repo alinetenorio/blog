@@ -1,5 +1,7 @@
 <?php
 
+	namespace app\Model;
+	use lib\Database\Conexao;
 	
 	class Postagem{
 		#Estabelece uma conexão com o banco de dados e recupera suas informações
@@ -14,7 +16,7 @@
 
 			$resultado = array();
 
-			while($row = $sql->fetchObject("Postagem")){
+			while($row = $sql->fetchObject(Postagem::class)){
 				$resultado[] = $row;
 			}
 

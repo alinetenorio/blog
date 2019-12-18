@@ -20,11 +20,48 @@ require_once 'app/Controller/AdminController.php';
 require_once 'app/Model/Postagem.php';
 require_once 'app/Model/Comentario.php';
 require_once 'lib/Database/Conexao.php';
+require_once 'app/Config.php';
 #Composer(dependency manager) handles autoloading automatically,  the following line of code
 # 	will allow you to load all your referenced packages:
 require_once 'vendor/autoload.php';
 
+use CoffeeCode\Router\Router;
+#use app\Controller\HomeController;
 
+$template = file_get_contents('app/Template/estrutura.html');
+ob_start();
+
+	$router = new Router (URL_BASE);
+
+	#Controladores
+	$router->namespace("App\Controller");
+
+	#Home->index
+	$router->group(null); 
+	$router->get("/", "HomeController:index");
+	$router->get("/home", "HomeController:index");
+
+	#Postagem->index
+	$router->group("postagem");
+	$router->get("/{id}", "PostagemController:index");
+	
+	$router->group("ooops");
+	$router->get("/{errcode}", "HomeController:error");
+	
+	$router->dispatch();
+	
+	if($router->error()){
+		$router->redirect("/ooops/{$router->error()}");
+	}
+
+	$saida = ob_get_contents();
+ob_end_clean();
+
+$template_pronto = str_replace('{{area_dinamica}}', $saida, $template);
+
+echo $template_pronto;
+
+/*
 
 #Lê o arquivo passado e o retorna como string
 $template = file_get_contents('app/Template/estrutura.html');
@@ -53,3 +90,5 @@ ob_end_clean();
 $template_pronto = str_replace('{{area_dinamica}}', $saida, $template);
 
 echo $template_pronto;
+
+*/

@@ -1,5 +1,6 @@
 {
     "require": {
-        "twig/twig": "^2.12"
+        "twig/twig": "^2.12",
+		"coffeecode/router": "^1.0"
     }
 }
