@@ -46,7 +46,4 @@
 
 		}
 		
-		public function error($data){
-			echo "Erro " . $data['errcode'];
-		}
 	}

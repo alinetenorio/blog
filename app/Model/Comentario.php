@@ -1,5 +1,8 @@
 <?php
 
+	namespace app\Model;
+	use lib\Database\Conexao;
+	
 	class Comentario{
 
 
@@ -9,12 +12,12 @@
 
 			$sql = "SELECT * FROM comentario WHERE id_postagem=:id_postagem";
 			$sql = $conexao->prepare($sql);
-			$sql->bindValue(':id_postagem', $id_postagem, PDO::PARAM_INT);
+			$sql->bindValue(':id_postagem', $id_postagem);
 			$sql->execute();
 
 			$resultado = array();
 
-			while($row = $sql->fetchObject("Comentario")){
+			while($row = $sql->fetchObject(Comentario::class)){
 				$resultado[] = $row;
 			}
 
