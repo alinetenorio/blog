@@ -10,8 +10,6 @@
 #No index.php serão feitos todos os imports dos arquivos php
 
 ##VER AUTOLOAD DOC OMPOOSER
-require_once 'app/Core/Core.php';
-
 require_once 'app/Controller/HomeController.php';
 require_once 'app/Controller/ErroController.php';
 require_once 'app/Controller/PostagemController.php';
