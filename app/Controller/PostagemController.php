@@ -1,15 +1,20 @@
 <?php
+	namespace App\Controller;
+	use app\Model\Postagem;
+	use app\Model\Comentario;
+	#use app\View\postagem;
+	
 
 	class PostagemController{
 
 
-		public function index($id){
+		public function index($data){
 			
 			try{
 	
 				
-				$postagem = Postagem::retornarPostagemId($id);
-				$comentarios = Comentario::selecionarTodos($id);
+				$postagem = Postagem::retornarPostagemId($data['id']);
+				$comentarios = Comentario::selecionarTodos($data['id']);
 
 				
 
@@ -21,8 +26,8 @@
 				$parametros['titulo'] = $postagem->titulo;
 				$parametros['conteudo'] = $postagem->conteudo;
 				$parametros['comentarios'] = $comentarios;
-				$parametros['id_post'] = $id;
-				   
+				$parametros['id_post'] = $data['id'];
+				
 				$conteudo = $template->render($parametros);
 				echo $conteudo;
 
@@ -35,13 +40,13 @@
 		}
 
 		public function insertComentario(){
+			
 			try{
 				
 				Comentario::insert($_POST);
-				var_dump($_POST);
 				
 				echo '<script>alert("Comentário adicionado");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=postagem&todo=index&id='.$_POST['id_postagem'].'"</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/postagem/'.$_POST['id_postagem'].'"</script>';
 				
 				
 

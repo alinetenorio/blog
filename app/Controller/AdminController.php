@@ -1,5 +1,8 @@
 <?php
 
+	namespace App\Controller;
+	use app\Model\Postagem;
+	
 	class AdminController{
 
 
@@ -42,21 +45,22 @@
 				Postagem::insert($_POST);
 
 				echo '<script>alert("Postagem adicionada");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index"</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
 
 			}catch(Exception $e){
 				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=create"</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/create"</script>';
 			}
 		}
 		
 		#renderiza a página html de alteração de postagens
-		public function updateView($id){
+		public function updateView($data){
+			
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
-			$twig = new Twig\Environment($loader);
+			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('update.html');
 			
-			$objPostagem = Postagem::retornarPostagemId($id);
+			$objPostagem = Postagem::retornarPostagemId($data['id']);
 			
 			$parametros = array();
 			$parametros['titulo'] = $objPostagem->titulo;
@@ -68,31 +72,31 @@
 			
 		}
 		
-		public function update(){
+		public function update($data){
 			try{
 				
-				Postagem::update($_POST);
+				Postagem::update($data);
 				
 				echo '<script>alert("Postagem alterada");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index"</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
 				
 			}catch(Exception $e){
 				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=update&id="=.$id</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/update/$id</script>';
 			}
 		}
 		
-		public function remove($id){
+		public function remove($data){
 			try{
 				
-				Postagem::remove($id);
+				Postagem::remove($data['id']);
 				
 				echo '<script>alert("Postagem removida");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index"</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
 				
 			}catch(Exception $e){
 				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin</script>';
 			}
 			
 		}

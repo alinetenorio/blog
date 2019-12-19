@@ -1,5 +1,7 @@
 <?php
 
+	namespace app\Model;
+	use lib\Database\Conexao;
 	
 	class Postagem{
 		#Estabelece uma conexão com o banco de dados e recupera suas informações
@@ -14,7 +16,7 @@
 
 			$resultado = array();
 
-			while($row = $sql->fetchObject("Postagem")){
+			while($row = $sql->fetchObject(Postagem::class)){
 				$resultado[] = $row;
 			}
 
@@ -31,10 +33,10 @@
 
 			$sql = "SELECT * FROM postagem WHERE id= :id";
 			$sql = $conexao->prepare($sql);
-			$sql->bindValue(':id', $id, PDO::PARAM_INT);
+			$sql->bindValue(':id', $id);
 			$sql->execute();
 
-			$resultado = $sql->fetchObject("Postagem");
+			$resultado = $sql->fetchObject(Postagem::class);
 
 			if(!$resultado){
 				throw new Exception("Não foi encontrado esse registro");

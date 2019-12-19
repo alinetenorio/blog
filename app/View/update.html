@@ -1,6 +1,6 @@
 <h1>Alterar Postagem</h1>
 
-<form method="post" action="?pagina=admin&todo=update">
+<form method="post" action="../update/{{id}}">
 	<span>Título</span><br>
 	<input type="text" name="titulo" value="{{titulo}}" ><br><br>
 
@@ -10,7 +10,7 @@
 	<input type="hidden" name="id" value="{{id}}">
 	
 	<br><br>
-	<input type="button" onclick="window.location.href='http://localhost/projetos-aline/site_simples/?pagina=admin&todo=index'" value="Voltar"/>
+	<input type="button" onclick="window.location.href='http://localhost/projetos-aline/site_simples/admin'" value="Voltar"/>
 	<input type='submit'  value="Alterar">
 
 </form>

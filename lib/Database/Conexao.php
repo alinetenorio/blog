@@ -1,4 +1,6 @@
 <?php
+	namespace lib\Database;
+	use \PDO;
 
 	abstract class Conexao{
 		#Estabelece uma conexão com um banco de dados, utilizando a classe PDO do PHP
