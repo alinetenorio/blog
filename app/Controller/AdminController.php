@@ -1,7 +1,8 @@
 <?php
 
 	namespace App\Controller;
-	use app\Model\Postagem;
+	use App\Model\Postagem;
+	use App\Model\Login;
 	
 	class AdminController{
 
@@ -19,7 +20,7 @@
 				$parametros['postagens'] = $objPostagens;
 				$conteudo = $template->render($parametros);
 				echo $conteudo;
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				$conteudo = $template->render();
 				echo $conteudo;
 				echo $e->getMessage();
@@ -30,14 +31,60 @@
 
 		}
 
+		public function loginView(){
+
+			$loader = new \Twig\Loader\FilesystemLoader('app/View');
+			$twig = new \Twig\Environment($loader);
+			$template = $twig->load('login.html');
+
+			try{
+				$parametros = array();
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
+			}catch(Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
+
+		}
+
+
+		public function login($data){
+	
+			try{
+				$resultado = Login::recuperar($data);
+				
+				echo sizeof($resultado);
+				if(sizeof($resultado)){
+					$_SESSION['usuario'] = $data['usuario'];
+					echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';	
+				}
+
+			}catch(\Exception $e){
+				
+				echo '<script>alert("'.$e->getMessage().'");</script>';
+				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/loginView"</script>';
+				
+			}
+				
+		}
+
+
 		public function create(){
 	
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('create.html');
 
- 			$conteudo = $template->render();
-			echo $conteudo;
+			try{
+ 				$conteudo = $template->render();
+				echo $conteudo;
+			}catch(Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
 		}
 
 		public function insert(){
@@ -47,7 +94,7 @@
 				echo '<script>alert("Postagem adicionada");</script>';
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
 
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				echo '<script>alert("'.$e->getMessage().'");</script>';
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/create"</script>';
 			}
@@ -60,15 +107,21 @@
 			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('update.html');
 			
-			$objPostagem = Postagem::retornarPostagemId($data['id']);
-			
-			$parametros = array();
-			$parametros['titulo'] = $objPostagem->titulo;
-			$parametros['conteudo'] = $objPostagem->conteudo;
-			$parametros['id'] = $objPostagem->id;
-			
-			$conteudo = $template->render($parametros);
-			echo $conteudo;
+			try{
+				$objPostagem = Postagem::retornarPostagemId($data['id']);
+				
+				$parametros = array();
+				$parametros['titulo'] = $objPostagem->titulo;
+				$parametros['conteudo'] = $objPostagem->conteudo;
+				$parametros['id'] = $objPostagem->id;
+				
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
+			}catch(\Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
 			
 		}
 		
@@ -80,7 +133,7 @@
 				echo '<script>alert("Postagem alterada");</script>';
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
 				
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				echo '<script>alert("'.$e->getMessage().'");</script>';
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/update/$id</script>';
 			}
@@ -94,7 +147,7 @@
 				echo '<script>alert("Postagem removida");</script>';
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
 				
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				echo '<script>alert("'.$e->getMessage().'");</script>';
 				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin</script>';
 			}

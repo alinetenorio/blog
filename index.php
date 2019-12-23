@@ -17,6 +17,7 @@ require_once 'app/Controller/SobreController.php';
 require_once 'app/Controller/AdminController.php';
 require_once 'app/Model/Postagem.php';
 require_once 'app/Model/Comentario.php';
+require_once 'app/Model/Login.php';
 require_once 'lib/Database/Conexao.php';
 require_once 'app/Config.php';
 
@@ -59,6 +60,8 @@ ob_start();
 	#Admin
 	$router->group("admin");
 	$router->get("/", "AdminController:index");
+	$router->get("/loginView", "AdminController:loginView");
+	$router->post("/login", "AdminController:login");
 	$router->get("/create", "AdminController:create");
 	$router->post("/insert", "AdminController:insert");
 	$router->get("/updateView/{id}", "AdminController:updateView");
