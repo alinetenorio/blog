@@ -55,9 +55,11 @@
 			try{
 				$resultado = Login::recuperar($data);
 				
-				echo sizeof($resultado);
-				if(sizeof($resultado)){
+				if(sizeof($resultado) == 1){
+					#Mudar aleatoriamente o id da sessão
+					session_regenerate_id();
 					$_SESSION['usuario'] = $data['usuario'];
+					$_SESSION['id_usuario'] = $resultado[0]->id;
 					echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';	
 				}
 
@@ -68,6 +70,13 @@
 				
 			}
 				
+		}
+
+		public function logout(){
+			unset($_SESSION["id_usuario"]);
+			unset($_SESSION["usuario"]);
+			header("Location: http://localhost/projetos-aline/site_simples/");
+			exit();
 		}
 
 

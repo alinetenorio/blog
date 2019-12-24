@@ -12,7 +12,7 @@
 
 
 		public function index(){
-			
+			var_dump($_SESSION);
 			
 			#twig: template engine para php. 
 			#{{...}}: output; {%...%}: executar comandos

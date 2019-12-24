@@ -1,5 +1,9 @@
 <?php
 
+if (session_status() != PHP_SESSION_ACTIVE):
+    session_start();
+endif;
+
 #Faz os imports; chama o método start() do Core; salva os outputs
 #	gerados em um buffer; substitui a area dinamica do template do site
 #	pelo conteudo do buffer; imprime o template modificado
@@ -29,12 +33,17 @@ use CoffeeCode\Router\Router;
 #use app\Controller\HomeController;
 
 #Lê o arquivo passado e o retorna como string
-$template = file_get_contents('app/Template/estrutura.html');
+if( isset($_SESSION['usuario'])){
+	$template = file_get_contents('app/Template/estrutura_admin.html');
+}else{
+	$template = file_get_contents('app/Template/estrutura_visitante.html');
+}
 
 #ob_start: Ativa o output buffering. Salva tudo que normalmente seria printado na tela
 #	->Start remembering everything that would normally be outputted, 
 #	but don't quite do anything with it yet
 #ob_get_contents(): Retorna tudo que foi salvo no buffer
+
 #ob_end_clean(): para de salvar e descarta tudo que há no buffer
 ob_start();
 
@@ -62,6 +71,7 @@ ob_start();
 	$router->get("/", "AdminController:index");
 	$router->get("/loginView", "AdminController:loginView");
 	$router->post("/login", "AdminController:login");
+	$router->get("/logout", "AdminController:logout");
 	$router->get("/create", "AdminController:create");
 	$router->post("/insert", "AdminController:insert");
 	$router->get("/updateView/{id}", "AdminController:updateView");
