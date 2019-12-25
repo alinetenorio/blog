@@ -7,6 +7,10 @@
 
 	class PostagemController{
 
+		public function __construct($router){
+			$this->router = $router;
+		}
+
 
 		public function index($data){
 			
@@ -39,20 +43,20 @@
 
 		}
 
-		public function insertComentario(){
+		public function insertComentario($data){
 			
 			try{
 				
-				Comentario::insert($_POST);
+				Comentario::insert($data);
 				
-				echo '<script>alert("Comentário adicionado");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/postagem/'.$_POST['id_postagem'].'"</script>';
+				
+				$this->router->redirect("post.index", ["id" => $data['id_postagem']]);
 				
 				
 
 			}catch(Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/?pagina=postagem&todo=index&id"=.$id</script>';
+				$this->router->redirect("post.index", ["id" => $data['id_postagem']]);
+				
 			}
 		}
 		

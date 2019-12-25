@@ -1,7 +1,8 @@
 <?php
 
-	namespace app\Model;
+	namespace App\Model;
 	use lib\Database\Conexao;
+	use \Exception;
 	
 	class Comentario{
 

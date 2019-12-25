@@ -1,12 +1,24 @@
 <?php
 
 	namespace App\Controller;
-	use app\Model\Postagem;
+	use App\Model\Postagem;
+	use App\Model\Login;
 	
 	class AdminController{
 
+		public function __construct($router){
+			$this->router = $router;
+		}
 
-		public function index(){
+		public function verify($data){
+			if (!isset($_SESSION['usuario'])){
+				$this->router->redirect('admin\loginView');
+			}
+		}
+
+
+		public function index($data){
+			$this->verify($data);
 
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
@@ -19,7 +31,7 @@
 				$parametros['postagens'] = $objPostagens;
 				$conteudo = $template->render($parametros);
 				echo $conteudo;
-			}catch(Exception $e){
+			}catch(\Exception $e){
 				$conteudo = $template->render();
 				echo $conteudo;
 				echo $e->getMessage();
@@ -30,73 +42,133 @@
 
 		}
 
-		public function create(){
+		public function loginView(){
+
+			$loader = new \Twig\Loader\FilesystemLoader('app/View');
+			$twig = new \Twig\Environment($loader);
+			$template = $twig->load('login.html');
+
+			try{
+				$parametros = array();
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
+			}catch(Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
+
+		}
+
+
+		public function login($data){
+	
+			try{
+				$resultado = Login::recuperar($data);
+				
+				if(sizeof($resultado) == 1){
+					#Mudar aleatoriamente o id da sessão
+					session_regenerate_id();
+					$_SESSION['usuario'] = $data['usuario'];
+					$_SESSION['id_usuario'] = $resultado[0]->id;
+					$this->router->redirect("admin.index");
+				}
+
+			}catch(\Exception $e){
+				$this->router->redirect("admin.loginView");	
+			}
+				
+		}
+
+		public function logout($data){
+			$this->verify($data);
+			
+			$_SESSION = array();
+	
+			$this->router->redirect("home.index");
+		}
+
+
+		public function create($data){
+			$this->verify($data);
 	
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('create.html');
 
- 			$conteudo = $template->render();
-			echo $conteudo;
+			try{
+ 				$conteudo = $template->render();
+				echo $conteudo;
+			}catch(Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
 		}
 
-		public function insert(){
+		public function insert($data){
+			$this->verify($data);
 			try{
-				Postagem::insert($_POST);
+				Postagem::insert($data);
 
-				echo '<script>alert("Postagem adicionada");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
+				$this->router->redirect("admin.index");
 
-			}catch(Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/create"</script>';
+			}catch(\Exception $e){
+				$this->router->redirect("admin.create");
 			}
 		}
 		
 		#renderiza a página html de alteração de postagens
 		public function updateView($data){
+			$this->verify($data);
 			
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
 			$template = $twig->load('update.html');
 			
-			$objPostagem = Postagem::retornarPostagemId($data['id']);
-			
-			$parametros = array();
-			$parametros['titulo'] = $objPostagem->titulo;
-			$parametros['conteudo'] = $objPostagem->conteudo;
-			$parametros['id'] = $objPostagem->id;
-			
-			$conteudo = $template->render($parametros);
-			echo $conteudo;
+			try{
+				$objPostagem = Postagem::retornarPostagemId($data['id']);
+				
+				$parametros = array();
+				$parametros['titulo'] = $objPostagem->titulo;
+				$parametros['conteudo'] = $objPostagem->conteudo;
+				$parametros['id'] = $objPostagem->id;
+				
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
+			}catch(\Exception $e){
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
 			
 		}
 		
 		public function update($data){
+			$this->verify($data);
 			try{
 				
 				Postagem::update($data);
 				
-				echo '<script>alert("Postagem alterada");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
+				$this->router->redirect("admin.index");
 				
-			}catch(Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/update/$id</script>';
+			}catch(\Exception $e){
+				
+				$this->router->redirect("admin.updateView", ["id" => $data['id'] ]);
 			}
 		}
 		
 		public function remove($data){
+			$this->verify($data);
 			try{
 				
 				Postagem::remove($data['id']);
 				
-				echo '<script>alert("Postagem removida");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
+				$this->router->redirect("admin.index");
 				
-			}catch(Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin</script>';
+			}catch(\Exception $e){
+				
+				$this->router->redirect("admin.index");
 			}
 			
 		}

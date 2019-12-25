@@ -10,9 +10,11 @@
 	#Esse output é capturado pelo index.php
 	class HomeController{
 
+		public function __construct($router){
+			$this->router = $router;
+		}
 
 		public function index(){
-			
 			
 			#twig: template engine para php. 
 			#{{...}}: output; {%...%}: executar comandos
