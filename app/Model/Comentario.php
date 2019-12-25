@@ -2,6 +2,7 @@
 
 	namespace App\Model;
 	use lib\Database\Conexao;
+	use \Exception;
 	
 	class Comentario{
 

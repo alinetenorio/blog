@@ -6,8 +6,13 @@
 	
 	class AdminController{
 
+		public function __construct($router){
+			$this->router = $router;
+		}
 
-		public function index(){
+
+		public function index($data){
+			var_dump($data);
 
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
@@ -60,23 +65,20 @@
 					session_regenerate_id();
 					$_SESSION['usuario'] = $data['usuario'];
 					$_SESSION['id_usuario'] = $resultado[0]->id;
-					echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';	
+					$this->router->redirect("admin.index");
 				}
 
 			}catch(\Exception $e){
-				
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/loginView"</script>';
-				
+				$this->router->redirect("admin.loginView");	
 			}
 				
 		}
 
 		public function logout(){
-			unset($_SESSION["id_usuario"]);
-			unset($_SESSION["usuario"]);
-			header("Location: http://localhost/projetos-aline/site_simples/");
-			exit();
+			
+			$_SESSION = array();
+	
+			$this->router->redirect("home.index");
 		}
 
 
@@ -100,12 +102,10 @@
 			try{
 				Postagem::insert($_POST);
 
-				echo '<script>alert("Postagem adicionada");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
+				$this->router->redirect("admin.index");
 
 			}catch(\Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/create"</script>';
+				$this->router->redirect("admin.create");
 			}
 		}
 		
@@ -139,12 +139,11 @@
 				
 				Postagem::update($data);
 				
-				echo '<script>alert("Postagem alterada");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
+				$this->router->redirect("admin.index");
 				
 			}catch(\Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin/update/$id</script>';
+				
+				$this->router->redirect("admin.updateView", ["id" => $data['id'] ]);
 			}
 		}
 		
@@ -153,12 +152,11 @@
 				
 				Postagem::remove($data['id']);
 				
-				echo '<script>alert("Postagem removida");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin"</script>';
+				$this->router->redirect("admin.index");
 				
 			}catch(\Exception $e){
-				echo '<script>alert("'.$e->getMessage().'");</script>';
-				echo '<script>location.href="http://localhost/projetos-aline/site_simples/admin</script>';
+				
+				$this->router->redirect("admin.index");
 			}
 			
 		}

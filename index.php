@@ -54,33 +54,33 @@ ob_start();
 
 	#Home
 	$router->group(null); 
-	$router->get("/", "HomeController:index");
-	$router->get("/home", "HomeController:index");
+	$router->get("/", "HomeController:index", "home.index");
+	$router->get("/home", "HomeController:index", "home.index");
 	
 	#Sobre
 	$router->group(null); 
-	$router->get("/sobre", "SobreController:index");
+	$router->get("/sobre", "SobreController:index", "sobre.index");
 
 	#Postagem
 	$router->group("postagem");
-	$router->get("/{id}", "PostagemController:index");
+	$router->get("/{id}", "PostagemController:index", "post.index");
 	$router->post("/{id}/addComentario", "PostagemController:insertComentario");
 	
 	#Admin
 	$router->group("admin");
-	$router->get("/", "AdminController:index");
-	$router->get("/loginView", "AdminController:loginView");
+	$router->get("/", "AdminController:index", "admin.index");
+	$router->get("/loginView", "AdminController:loginView", "admin.loginView");
 	$router->post("/login", "AdminController:login");
 	$router->get("/logout", "AdminController:logout");
-	$router->get("/create", "AdminController:create");
+	$router->get("/create", "AdminController:create", "admin.create");
 	$router->post("/insert", "AdminController:insert");
-	$router->get("/updateView/{id}", "AdminController:updateView");
+	$router->get("/updateView/{id}", "AdminController:updateView", "admin.updateView");
 	$router->post("/update/{id}", "AdminController:update");
 	$router->get("/remove/{id}", "AdminController:remove");
 	
 	#Erro
 	$router->group("ooops");
-	$router->get("/{errcode}", "ErroController:index");
+	$router->get("/{errcode}", "ErroController:index", "erro.index");
 	
 	$router->dispatch();
 	
