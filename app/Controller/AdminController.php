@@ -10,9 +10,15 @@
 			$this->router = $router;
 		}
 
+		public function verify($data){
+			if (!isset($_SESSION['usuario'])){
+				$this->router->redirect('admin\loginView');
+			}
+		}
+
 
 		public function index($data){
-			var_dump($data);
+			$this->verify($data);
 
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
@@ -74,7 +80,8 @@
 				
 		}
 
-		public function logout(){
+		public function logout($data){
+			$this->verify($data);
 			
 			$_SESSION = array();
 	
@@ -82,7 +89,8 @@
 		}
 
 
-		public function create(){
+		public function create($data){
+			$this->verify($data);
 	
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
@@ -98,9 +106,10 @@
 			}
 		}
 
-		public function insert(){
+		public function insert($data){
+			$this->verify($data);
 			try{
-				Postagem::insert($_POST);
+				Postagem::insert($data);
 
 				$this->router->redirect("admin.index");
 
@@ -111,6 +120,7 @@
 		
 		#renderiza a página html de alteração de postagens
 		public function updateView($data){
+			$this->verify($data);
 			
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
@@ -135,6 +145,7 @@
 		}
 		
 		public function update($data){
+			$this->verify($data);
 			try{
 				
 				Postagem::update($data);
@@ -148,6 +159,7 @@
 		}
 		
 		public function remove($data){
+			$this->verify($data);
 			try{
 				
 				Postagem::remove($data['id']);
