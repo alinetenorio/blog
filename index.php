@@ -46,6 +46,7 @@ if( isset($_SESSION['usuario'])){
 
 #ob_end_clean(): para de salvar e descarta tudo que há no buffer
 ob_start();
+	var_dump($_SESSION['usuario']);
 
 	$router = new Router (URL_BASE);
 

@@ -13,7 +13,7 @@
 			#essa verificação é feita para que não haja mais de uma conexão
 			#em aberto com o banco de dados
 			if(self::$conexao == null){
-				self::$conexao = new PDO('mysql: host=localhost;port=3306; dbname=site_simples', 'root', '');
+				self::$conexao = new PDO('mysql: host=localhost;port=3307; dbname=site_simples', 'root', 'root');
 			}
 			
 			return self::$conexao;
