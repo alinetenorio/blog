@@ -8,15 +8,17 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="http://localhost/projetos-aline/site_simples/css/bootstrap.min.css" >
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-		<link href="carousel.css" rel="stylesheet">
-		<link href="blog.css" rel="stylesheet">
+		<link href="http://localhost/projetos-aline/site_simples/css/carousel.css" rel="stylesheet">
+		<link href="http://localhost/projetos-aline/site_simples/css/blog.css" rel="stylesheet">
+		<link href="http://localhost/projetos-aline/site_simples/css/custom.css" rel="stylesheet">
 	</head>
 
 	<body>
 		<style type="text/css">
 			*{margin: 0; padding:0;}
-			body{background-color: #FFE4E1}
-			#inicio{position: relative; top: 20}
+			body{background-color: #EEE}
+			#inicio{position: relative; }
+			#titulo{margin-left:20%;}
 			#corpo{background-color: #fff; margin: 0 auto ;width:80%; border-left: 2px solid #ccc; border-right: 2px solid #ccc}
 				#topo{padding: 60px 25px;border-bottom: 2px solid #ccc}
 				#topo a{color: #333; text-decoration: none; font: 20px Times;padding-right:5px;padding-left: 5px}
@@ -35,7 +37,7 @@
 		</style>
 		
 		
-	
+		<div id="menu">
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 				<a class="navbar-brand" href="#">Carousel</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,16 +61,21 @@
 				  </form>
 				</div>
 			  </nav>
-	
+		</div>
 			  
 		<div id="inicio">
 		
-			<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-				<div class="col-md-6 px-0">
-				  <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-				  <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-				  <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+			<div class="jumbotron p-4 p-md-2 text-white rounded bg-dark">
+				<img  src="http://localhost/projetos-aline/site_simples/assets/capa.jpg"  align="left" height="50%">
+				<div id="titulo">
+					<div class="col-md-12 " >
+						
+						<h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
+						<p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+						<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+					</div>
 				</div>
+			
 			</div>
 		
 		</div>
