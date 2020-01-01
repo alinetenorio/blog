@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 	<head>
 		<!-- Required meta tags -->
@@ -17,22 +17,6 @@
 		<style type="text/css">
 			*{margin: 0; padding:0;}
 			body{background-color: #EEE}
-			#inicio{position: relative; }
-			#titulo{margin-left:20%;}
-			#corpo{background-color: #fff; margin: 0 auto ;width:80%; border-left: 2px solid #ccc; border-right: 2px solid #ccc}
-				#topo{padding: 60px 25px;border-bottom: 2px solid #ccc}
-				#topo a{color: #333; text-decoration: none; font: 20px Times;padding-right:5px;padding-left: 5px}
-				#topo a:hover{text-decoration: underline;}
-				.flutuacao-direita{float: right;}
-
-				#conteudo{background-color: #fff;padding: 20px 25px}
-				#conteudo h1{margin-bottom: 20px; font:25px Times; }
-				#conteudo article{margin-bottom: 20px}
-						  article h2{ margin-bottom: 10px}
-						  article h2 a{font: 20px Times; color:black; text-decoration: none;} 
-						  article h2 a:hover{text-decoration: underline}
-
-						  article p{font: 16px Times; color: #333;padding-left: 10px}
 
 		</style>
 		
@@ -63,25 +47,28 @@
 			  </nav>
 		</div>
 			  
-		<div id="inicio">
 		
-			<div class="jumbotron p-4 p-md-2 text-white rounded bg-dark">
-				<img  src="http://localhost/projetos-aline/site_simples/assets/capa.jpg"  align="left" height="50%">
-				<div id="titulo">
-					<div class="col-md-12 " >
-						
-						<h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-						<p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-						<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-					</div>
-				</div>
+		
+		<div class="jumbotron  p-md-4 text-white rounded bg-dark inicio">
 			
+			<div class="logo">
+				<img src="http://localhost/projetos-aline/site_simples/assets/logo.png">
 			</div>
+			
+			<div class="col-md-10 titulo"  >
+				
+				<h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
+				<p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+				<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+			</div>
+			
 		
 		</div>
 		
-		<div id="corpo">
-				<div id="topo">
+	
+		
+		<div class="corpo">
+				<div class="topo">
 					<header>
 						<nav>
 							<a href="http://localhost/projetos-aline/site_simples/">Home</a>
@@ -93,7 +80,7 @@
 					</header>
 				</div>
 
-				<div id="conteudo">
+				<div class="conteudo">
 					{{area_dinamica}}
 				</div>
 		</div>
