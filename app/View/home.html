@@ -2,9 +2,9 @@
 	<h1>Postagens</h1>
 
 	{% for post in postagens %}
-	<article>
+	<article class="blog-post">
 		<header>
-			<h2><a href="postagem/{{post.id}}">{{post.titulo}}</a></h2>
+			<h2 class="blog-post-title"><a href="postagem/{{post.id}}">{{post.titulo}}</a><h2>
 		</header>
 
 		<p>{{post.conteudo}}</p>

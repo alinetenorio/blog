@@ -62,7 +62,6 @@ h1, h2, h3, h4, h5, h6 {
 	width:80%; 
 	border-left: 2px solid #ccc; 
 	border-right: 2px solid #ccc;
-	border-bottom: 2px solid #ccc;
 	float:left
 	
 }
@@ -92,6 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 .conteudo{
 	background-color: #fff;
 	padding: 20px 25px;
+	border-bottom: none !important;
 }
 
 .conteudo h1{
@@ -113,6 +113,11 @@ h1, h2, h3, h4, h5, h6 {
 	text-decoration: none;
 }
 
+.blog-post-title a{
+	margin-bottom: .25rem !important;
+  font-size: 2.5rem !important;
+}
+
 .conteudo article h2 a:hover{
 	text-decoration: underline
 }
@@ -126,6 +131,7 @@ h1, h2, h3, h4, h5, h6 {
 	position:relative;
 	float:right;
 	padding: 10px;
+	border-bottom: 2px solid #ccc;
 }
 
 
@@ -189,6 +195,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: .25rem;
   font-size: 2.5rem;
 }
+
+
 .blog-post-meta {
   margin-bottom: 1.25rem;
   color: #999;
@@ -198,12 +206,17 @@ h1, h2, h3, h4, h5, h6 {
  * Footer
  */
 .blog-footer {
+	width:100%;
+	display:flex;
+	
+	border-top: 2px solid #ccc;
   padding: 2.5rem 0;
   color: #999;
   text-align: center;
-  background-color: #f9f9f9;
-  border-top: .05rem solid #e5e5e5;
+  
+ 
 }
+
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
