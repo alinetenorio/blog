@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 .jumbotron{
 	display:flex;
 	align-items:center;
+	margin-bottom:0!important;
 }
 
 .logo{
@@ -48,25 +49,36 @@ h1, h2, h3, h4, h5, h6 {
 	
 }
 
+.meio{
+	margin: 0 auto;
+	width:90%;
+
+}
+
+
 .corpo{
 	background-color: #fff; 
-	margin: 0 auto;
+	position:relative;
 	width:80%; 
 	border-left: 2px solid #ccc; 
 	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	float:left
+	
 }
 
 .topo{
-	padding: 60px 25px;
+	padding: 10px 25px;
 	border-bottom: 2px solid #ccc;
+	text-align: center;
 }
 
 .topo a{
 	color: #333; 
 	text-decoration: none; 
 	font: 20px Times;
-	padding-right:5px;
-	padding-left: 5px;
+	padding-right:15px;
+	padding-left: 15px;
 }
 
 .topo a:hover{
@@ -108,6 +120,14 @@ h1, h2, h3, h4, h5, h6 {
 .conteudo article p{
 	font: 16px Times; color: #333;padding-left: 10px
 }
+
+.lateral{
+	width:20%;
+	position:relative;
+	float:right;
+	padding: 10px;
+}
+
 
 .nav-scroller {
   position: relative;
