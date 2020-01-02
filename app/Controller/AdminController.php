@@ -132,6 +132,7 @@
 				$parametros = array();
 				$parametros['titulo'] = $objPostagem->titulo;
 				$parametros['conteudo'] = $objPostagem->conteudo;
+				$parametros['tag'] = $objPostagem->tag;
 				$parametros['id'] = $objPostagem->id;
 				
 				$conteudo = $template->render($parametros);

@@ -29,6 +29,8 @@
 				$parametros = array();
 				$parametros['titulo'] = $postagem->titulo;
 				$parametros['conteudo'] = $postagem->conteudo;
+				$parametros['data'] = $postagem->data;
+				$parametros['tag'] = $postagem->tag;
 				$parametros['comentarios'] = $comentarios;
 				$parametros['id_post'] = $data['id'];
 				

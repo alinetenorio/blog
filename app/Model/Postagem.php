@@ -55,10 +55,11 @@
 
 			$conexao = Conexao::getConexao();
 
-			$sql = "INSERT INTO postagem (titulo, conteudo) VALUES (:tit, :cont)";
+			$sql = "INSERT INTO postagem (titulo, conteudo, tag, data) VALUES (:tit, :cont, :tag, CURDATE())";
 			$sql = $conexao->prepare($sql);
 			$sql->bindValue(':tit', $params['titulo']);
 			$sql->bindValue(':cont', $params['conteudo']);
+			$sql->bindValue(':tag', $params['tag']);
 			$resultado = $sql->execute();
 
 			if($resultado == false){
@@ -77,13 +78,14 @@
 			
 			$conexao = Conexao::getConexao();
 			
-			$sql = "UPDATE postagem SET titulo = :tit, conteudo = :cont 
+			$sql = "UPDATE postagem SET titulo = :tit, conteudo = :cont, tag=:tag, data = CURDATE() 
 					WHERE id = :id";
 					
 			$sql = $conexao->prepare($sql);
 			
 			$sql->bindValue(':tit', $params['titulo']);
 			$sql->bindValue(':cont', $params['conteudo']);
+			$sql->bindValue(':tag', $params['tag']);
 			$sql->bindValue(':id', $params['id']);
 			
 			$resultado = $sql->execute();
