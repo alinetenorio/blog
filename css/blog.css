@@ -1,5 +1,9 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
+			
+body{
+	background-color: #EEE;
+}
 
 .blog-header {
   line-height: 1;
@@ -80,8 +84,9 @@ h1, h2, h3, h4, h5, h6 {
 	padding-left: 15px;
 }
 
-.topo a:hover{
+a:hover{
 	text-decoration: underline;
+	color: #333; 
 }
 
 .flutuacao-direita{
@@ -96,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .conteudo h1{
 	margin-bottom: 20px; 
-	font:25px Times;
+	
 }
 
 .conteudo article{
@@ -107,20 +112,19 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 10px
 }
 
-.conteudo article h2 a{
-	font: 20px Times; 
-	color:black; 
-	text-decoration: none;
-}
+
 
 .blog-post-title a{
+	
 	margin-bottom: .25rem !important;
   font-size: 2.5rem !important;
+	
 }
 
-.conteudo article h2 a:hover{
-	text-decoration: underline
+a{
+	color: #045B62;
 }
+
 
 .conteudo article p{
 	font: 16px Times; color: #333;padding-left: 10px
