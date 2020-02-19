@@ -18,6 +18,7 @@ require_once 'app/Controller/HomeController.php';
 require_once 'app/Controller/ErroController.php';
 require_once 'app/Controller/PostagemController.php';
 require_once 'app/Controller/SobreController.php';
+require_once 'app/Controller/BuscaController.php';
 require_once 'app/Controller/AdminController.php';
 require_once 'app/Model/Postagem.php';
 require_once 'app/Model/Comentario.php';
@@ -46,7 +47,7 @@ if( isset($_SESSION['usuario'])){
 
 #ob_end_clean(): para de salvar e descarta tudo que há no buffer
 ob_start();
-	var_dump($_SESSION['usuario']);
+	//var_dump($_SESSION['usuario']);
 
 	$router = new Router (URL_BASE);
 
@@ -61,6 +62,10 @@ ob_start();
 	#Sobre
 	$router->group(null); 
 	$router->get("/sobre", "SobreController:index", "sobre.index");
+
+	#Busca
+	$router->group("busca");
+	$router->get("/{tag}","BuscaController:index", "busca.index");
 
 	#Postagem
 	$router->group("postagem");

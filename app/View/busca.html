@@ -1,0 +1,14 @@
+<section>
+	<h1>{{tag}}</h1>
+
+	{% for post in postagens %}
+	<article class="blog-post">
+		<header>
+			<h2 class="blog-post-title"><a href="http://localhost/projetos-aline/site_simples/postagem/{{post.id}}">{{post.titulo}}</a><h2>
+		</header>
+
+		<p class="blog-post-meta">{{post.data}}</p>
+	</article>
+	
+	{% endfor%}
+</section>

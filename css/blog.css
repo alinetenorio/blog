@@ -1,6 +1,10 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
-			
+hr{
+	border: 1px solid grey;
+
+}
+	
 body{
 	background-color: #EEE;
 }
@@ -117,7 +121,7 @@ a:hover{
 .blog-post-title a{
 	
 	margin-bottom: .25rem !important;
-  font-size: 2.5rem !important;
+  font-size: 2rem !important;
 	
 }
 
@@ -136,6 +140,7 @@ a{
 	float:right;
 	padding: 10px;
 	border-bottom: 2px solid #ccc;
+	border-left: 0px;
 }
 
 

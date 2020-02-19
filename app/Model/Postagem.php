@@ -46,6 +46,27 @@
 			return $resultado;
 		}
 
+		public static function buscarPorTag($tag){
+			$conexao = Conexao::getConexao();
+
+			$sql = "SELECT * FROM postagem WHERE tag= :tag";
+			$sql = $conexao->prepare($sql);
+			$sql->bindValue(':tag', $tag);
+			$sql->execute();
+
+			$resultado = array();
+
+			while($row = $sql->fetchObject(Postagem::class)){
+				$resultado[] = $row;
+			}
+
+			if(!$resultado){
+				throw new Exception("Não foi encontrado nenhum registro");
+			}
+
+			return $resultado;
+		}
+
 		public static function insert($params){
 
 			if(empty($params['titulo']) || empty($params['conteudo'])){

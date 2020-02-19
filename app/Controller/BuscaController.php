@@ -8,13 +8,13 @@
 	#Renderiza a página e dá um output no template renderizado(apenas a parte
 	#dinâmica da página home.
 	#Esse output é capturado pelo index.php
-	class HomeController{
+	class BuscaController{
 
 		public function __construct($router){
 			$this->router = $router;
 		}
 
-		public function index(){
+		public function index($data){
 			
 			#twig: template engine para php. 
 			#{{...}}: output; {%...%}: executar comandos
@@ -25,13 +25,14 @@
 			$loader = new \Twig\Loader\FilesystemLoader('app/View');
 			$twig = new \Twig\Environment($loader);
 			
-			$template = $twig->load('home.html');
+			$template = $twig->load('busca.html');
 				
 			try{
-				$colecaoPostagem = Postagem::selecionarTodos();
+				$colecaoPostagem = Postagem::buscarPorTag($data['tag']);
 
 				$parametros = array();
 				$parametros['postagens'] = $colecaoPostagem;
+				$parametros['tag'] = $data['tag'];
 				   
 				#render: renderiza o template com os $parametros
 				$conteudo = $template->render($parametros);

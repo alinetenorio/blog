@@ -2,7 +2,7 @@
 	namespace App\Controller;
 	use app\Model\Postagem;
 	use app\Model\Comentario;
-	#use app\View\postagem;
+	use \Exception;
 	
 
 	class PostagemController{
@@ -14,22 +14,21 @@
 
 		public function index($data){
 			
+			$loader = new \Twig\Loader\FilesystemLoader('app/View');
+			$twig = new \Twig\Environment($loader);
+			$template = $twig->load('postagem.html');
+
 			try{
 	
 				
 				$postagem = Postagem::retornarPostagemId($data['id']);
 				$comentarios = Comentario::selecionarTodos($data['id']);
 
-				
-
-				$loader = new \Twig\Loader\FilesystemLoader('app/View');
-				$twig = new \Twig\Environment($loader);
-				$template = $twig->load('postagem.html');
-
 				$parametros = array();
 				$parametros['titulo'] = $postagem->titulo;
 				$parametros['conteudo'] = $postagem->conteudo;
-				$parametros['data'] = $postagem->data;
+				$newDate = date("d/m/Y", strtotime($postagem->data));
+				$parametros['data'] = $newDate;
 				$parametros['tag'] = $postagem->tag;
 				$parametros['comentarios'] = $comentarios;
 				$parametros['id_post'] = $data['id'];
@@ -40,6 +39,8 @@
 				
 			}catch(Exception $e){
 				echo $e->getMessage();
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
 			}
 
 
