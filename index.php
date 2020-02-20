@@ -101,6 +101,7 @@ ob_end_clean();
 #procura a string {{area_dinamica}} no estrutura.html, e o substitui pela saída
 #gerada pelo buffer.
 $template_pronto = str_replace('{{area_dinamica}}', $saida, $template);
+$template_pronto = str_replace('{{link_home}}', $router->route('home.index'), $template_pronto);
 
 echo $template_pronto;
 

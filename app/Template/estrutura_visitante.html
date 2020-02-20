@@ -9,9 +9,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="http://localhost/projetos-aline/site_simples/css/bootstrap.min.css" >
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-		<link href="http://localhost/projetos-aline/site_simples/css/carousel.css" rel="stylesheet">
 		<link href="http://localhost/projetos-aline/site_simples/css/blog.css" rel="stylesheet">
-		<link href="http://localhost/projetos-aline/site_simples/css/custom.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -19,33 +17,41 @@
 		
 		<div id="menu">
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand" href="#">Carousel</a>
+				<a class="navbar-brand" href="{{link_home}}">Home</a>
+
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
+				 
 				  <ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="#">PHP <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="#">Link</a>
+					<li class="nav-item active">
+					  <a class="nav-link" href="#">Laravel <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					<li class="nav-item active">
+					  <a class="nav-link" href="#">Portfólio <span class="sr-only">(current)</span></a>
 					</li>
-				  </ul>
-				  <form class="form-inline mt-2 mt-md-0">
-					<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				  </form>
+					<li class="nav-item active">
+					  <a class="nav-link" href="#">Contato <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+					  <a class="nav-link" href="#">Sobre <span class="sr-only">(current)</span></a>
+					</li>
+
+				</ul>
+				<a class="navbar-brand" href="#">Admin <span class="sr-only flutuacao-direita">(current)</span></a>
+					
+				
 				</div>
 			  </nav>
 		</div>
 			  
 		
 		
-		<div class="jumbotron  p-md-4 text-white rounded bg-dark inicio">
+		<div class="jumbotron  p-md-4 text-white rounded bg-dark ">
 			
 			<div class="logo">
 				<img src="http://localhost/projetos-aline/site_simples/assets/logo.png">
@@ -53,9 +59,9 @@
 			
 			<div class="col-md-10 titulo"  >
 				
-				<h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-				<p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-				<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+				<h1 class="display-4 font-italic">Aline Tenório</h1>
+				<p class="lead my-3">Desenvolvimento web com PHP e Laravel</p>
+				<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Portfólio</a></p>
 			</div>
 			
 		
@@ -64,19 +70,6 @@
 	
 		<div class="meio">
 			<div class="corpo">
-					<div class="topo">
-						<header>
-							<nav>
-								<a href="http://localhost/projetos-aline/site_simples/">Home</a>
-								<a href="http://localhost/projetos-aline/site_simples/sobre">Sobre</a>
-								<a href="http://localhost/projetos-aline/site_simples/admin/loginView" class="flutuacao-direita"> Admin</a>
-								
-
-							</nav>
-						</header>
-					</div>
-					
-
 					<div class="conteudo">
 						{{area_dinamica}}
 					</div>
