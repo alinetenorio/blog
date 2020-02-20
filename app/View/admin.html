@@ -1,4 +1,4 @@
-<h1>Gerenciador de Conteúdo</h1>
+<h1>Postagens</h1>
 
 <a href="http://localhost/projetos-aline/site_simples/admin/create">Adicionar Postagem</a><br>
 <hr>
@@ -8,16 +8,16 @@
 	<tr>
 		<th>ID</th>
 		<th>TÍTULO</th>
-		<th>ALTERAÇÃO</th>
-		<th>DELEÇÃO</th>
+		<th>ALTERAR</th>
+		<th>DELETAR</th>
 	</tr>
 
 	{% for p in postagens %}
 	<tr>
 		<th>{{p.id}}</th>
 		<th>{{p.titulo}}</th>
-		<th><a href="http://localhost/projetos-aline/site_simples/admin/updateView/{{p.id}}">ALTERAÇÃO</a></th>
-		<th><a href="http://localhost/projetos-aline/site_simples/admin/remove/{{p.id}}">DELEÇÃO</a></th>
+		<th><a href="http://localhost/projetos-aline/site_simples/admin/updateView/{{p.id}}">ALTERAR</a></th>
+		<th><a href="http://localhost/projetos-aline/site_simples/admin/remove/{{p.id}}">DELETAR</a></th>
 	</tr>
 	{% endfor %}
 </table>

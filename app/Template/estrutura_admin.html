@@ -8,48 +8,158 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="http://localhost/projetos-aline/site_simples/css/bootstrap.min.css" >
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+		<link href="http://localhost/projetos-aline/site_simples/css/carousel.css" rel="stylesheet">
+		<link href="http://localhost/projetos-aline/site_simples/css/blog.css" rel="stylesheet">
+		<link href="http://localhost/projetos-aline/site_simples/css/custom.css" rel="stylesheet">
 
 	</head>
 
 	<body>
-		<style type="text/css">
-			*{margin: 0; padding:0;}
-			body{background-color: #FFE4E1}
+		<div id="menu">
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+				<a class="navbar-brand" href="#">Carousel</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+				  <ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+					  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					</li>
+				  </ul>
+				  <form class="form-inline mt-2 mt-md-0">
+					<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				  </form>
+				</div>
+			  </nav>
+		</div>
 
-			#corpo{background-color: #fff; margin: 0 auto ;width:80%; border-left: 2px solid #ccc; border-right: 2px solid #ccc}
-				#topo{padding: 20px 25px;border-bottom: 2px solid #ccc}
-				#topo a{color: #333; text-decoration: none; font: 20px Times;padding-right:5px;padding-left: 5px}
-				#topo a:hover{text-decoration: underline;}
-				.flutuacao-direita{float: right;}
+		<div class="jumbotron text-white rounded bg-dark admin">
+					
+				<h1 class="display-4 font-italic admin">Gerenciador de Conteúdo</h1>
+		
+		
+		</div>
 
-				#conteudo{background-color: #fff;padding: 20px 25px}
-				#conteudo h1{margin-bottom: 20px; font:25px Times; }
-				#conteudo article{margin-bottom: 20px}
-						  article h2{ margin-bottom: 10px}
-						  article h2 a{font: 20px Times; color:black; text-decoration: none;} 
-						  article h2 a:hover{text-decoration: underline}
 
-						  article p{font: 16px Times; color: #333;padding-left: 10px}
-
-		</style>
-		<div id="corpo">
-				<div id="topo">
-					<header>
-						<nav>
-							<a href="http://localhost/projetos-aline/site_simples">Home</a>
-							<a href="http://localhost/projetos-aline/site_simples/sobre">Sobre</a>
-							<a href="http://localhost/projetos-aline/site_simples/admin" class="flutuacao-direita"> Admin</a>
-							<a href="http://localhost/projetos-aline/site_simples/admin/logout" class="flutuacao-direita"> Sair</a>
 							
 
+		<div class="meio">
+			<div class="corpo">
+					<div class="topo">
+						<header>
+							<nav>
+								<a href="http://localhost/projetos-aline/site_simples/">Home</a>
+								<a href="http://localhost/projetos-aline/site_simples/sobre">Sobre</a>
+								<a href="http://localhost/projetos-aline/site_simples/admin/loginView" class="flutuacao-direita"> Admin</a>
+								<a href="http://localhost/projetos-aline/site_simples/admin/logout" class="flutuacao-direita"> Sair</a>
+								
 
-						</nav>
-					</header>
-				</div>
+							</nav>
+						</header>
+					</div>
+					
 
-				<div id="conteudo">
-					{{area_dinamica}}
+					<div class="conteudo">
+						{{area_dinamica}}
+					</div>
+			</div>
+			<div class="corpo lateral">
+				<h4>Menu</h4>
+
+				<ul>
+					<li><a href= "http://localhost/projetos-aline/site_simples/busca/php">php</a></li>
+					<li><a href="http://localhost/projetos-aline/site_simples/busca/laravel">laravel</a></li>
+				</ul>
+
+				<hr>
+
+				<ul>
+					<li><a href= "http://localhost/projetos-aline/site_simples/busca/data/feb">fevereiro</a></li>
+					<li><a href= "http://localhost/projetos-aline/site_simples/busca/data/jan">janeiro</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<footer class="blog-footer">
+        <!-- Rodapé -->
+       
+			<div class="container ">
+				<div class="brand"></div>
+				<div class="p-4"></div>
+				<div class="menus">
+					<div class="row">
+						<div class="col-md-3 col-6">
+							<span>MENU</span>
+							<div class="p-2"></div>
+							<ul class="menu">
+								<li><a href="javascript://" data-id="allcontent">Home</a></li>
+								<li><a href="javascript://" data-id="about">Quem sou</a></li>
+								<li><a href="javascript://" data-id="services">O que faço?</a></li>
+								<li><a href="javascript://" data-id="portifolio">Portifólio</a></li>
+								<li><a href="javascript://" data-id="vlog">Vlog</a></li>
+								<li><a href="javascript://" data-id="contact">Contato</a></li>
+							</ul>
+							<div class="p-2"></div>
+						</div>
+						<div class="col-md-3 col-6">
+							<span>REDES SOCIAIS</span>
+							<div class="p-2"></div>
+							<ul>
+								<li><a href="https://www.instagram.com/attekitadev/" target="_blank">Instagram</a></li>
+								<li><a href="https://www.linkedin.com/in/bullas-attekita-681b8632/" target="_blank">LinkedIn</a></li>
+								<li><a href="https://www.youtube.com/channel/UCetRsdZxDQDcgVDJd6erz6g" target="_blank">Youtube</a></li>
+							</ul>
+							<div class="p-2"></div>
+						</div>
+						<div class="col-md-6">
+							<div class="contact-info">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-6">
+										<div class="label">
+											<div class="icon"><i class="fas fa-phone"></i></div>
+											TELEFONE DE<br>
+											ATENDIMENTO                                    </div>
+									</div>
+									<div class="col-md-6 col-sm-6 col-6">
+										<div class="phone">
+											<a href="">62 99985 7444</a>
+										</div>
+									</div>
+								</div>
+								<div class="p-2"></div>
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-6">
+										<div class="label">
+											<div class="icon"><i class="fas fa-envelope"></i></div>
+											E-MAIL PARA<br>
+											CONTATO                                    </div>
+									</div>
+									<div class="col-md-6 col-sm-6 col-6">
+										<div class="mail">
+											<b>CONTATO</b>
+											@attekita.com                                    </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+				<div class="p-4"></div>
+				<div class="credits">
+					Copyright © 2018 Attekita Dev            </div>
+				<div class="p-4"></div>
+			
+        <!-- Rodapé -->
+    </footer>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

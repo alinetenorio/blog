@@ -66,6 +66,7 @@ ob_start();
 	#Busca
 	$router->group("busca");
 	$router->get("/{tag}","BuscaController:index", "busca.index");
+	$router->get("/data/{tag}","BuscaController:porData", "busca.data");
 
 	#Postagem
 	$router->group("postagem");

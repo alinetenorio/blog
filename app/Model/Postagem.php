@@ -67,6 +67,27 @@
 			return $resultado;
 		}
 
+		public static function buscarPorData($month_int){
+			$conexao = Conexao::getConexao();
+
+			$sql = "SELECT * FROM postagem WHERE MONTH(data)= :month";
+			$sql = $conexao->prepare($sql);
+			$sql->bindValue(':month', $month_int);
+			$sql->execute();
+
+			$resultado = array();
+
+			while($row = $sql->fetchObject(Postagem::class)){
+				$resultado[] = $row;
+			}
+
+			if(!$resultado){
+				throw new Exception("Não foi encontrado nenhum registro");
+			}
+
+			return $resultado;
+		}
+
 		public static function insert($params){
 
 			if(empty($params['titulo']) || empty($params['conteudo'])){

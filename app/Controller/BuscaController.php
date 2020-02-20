@@ -10,6 +10,8 @@
 	#Esse output é capturado pelo index.php
 	class BuscaController{
 
+		private $meses = array("jan"=>"Janeiro", "feb"=>"Fevereiro");
+
 		public function __construct($router){
 			$this->router = $router;
 		}
@@ -33,6 +35,39 @@
 				$parametros = array();
 				$parametros['postagens'] = $colecaoPostagem;
 				$parametros['tag'] = $data['tag'];
+				   
+				#render: renderiza o template com os $parametros
+				$conteudo = $template->render($parametros);
+				echo $conteudo;
+
+				
+			}catch(\Exception $e){
+				#render: renderiza o template e mostra mensagem de erro
+				$conteudo = $template->render();
+				echo $conteudo;
+				echo $e->getMessage();
+			}
+
+
+		}
+
+		public function porData($data){
+			
+			$loader = new \Twig\Loader\FilesystemLoader('app/View');
+			$twig = new \Twig\Environment($loader);
+			
+			$template = $twig->load('busca.html');
+
+			$data_int = date('m', strtotime($data['tag']));
+
+
+				
+			try{
+				$colecaoPostagem = Postagem::buscarPorData($data_int);
+
+				$parametros = array();
+				$parametros['postagens'] = $colecaoPostagem;
+				$parametros['tag'] = $this->meses[$data['tag']];
 				   
 				#render: renderiza o template com os $parametros
 				$conteudo = $template->render($parametros);

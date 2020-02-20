@@ -35,6 +35,7 @@
 				   
 				#render: renderiza o template com os $parametros
 				$conteudo = $template->render($parametros);
+
 				echo $conteudo;
 
 				
