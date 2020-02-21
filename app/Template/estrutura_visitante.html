@@ -7,9 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="http://localhost/projetos-aline/site_simples/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="{{URL_BASE}}/css/bootstrap.min.css" >
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-		<link href="http://localhost/projetos-aline/site_simples/css/blog.css" rel="stylesheet">
+		<link href="{{URL_BASE}}/css/blog.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -26,23 +26,23 @@
 				 
 				  <ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">PHP <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="{{link_php}}">PHP <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">Laravel <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="{{link_laravel}}">Laravel <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">Portfólio <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="{{link_portfolio}}">Portfólio <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">Contato <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="{{link_contato}}">Contato <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">Sobre <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="{{link_sobre}}">Sobre <span class="sr-only">(current)</span></a>
 					</li>
 
 				</ul>
-				<a class="navbar-brand" href="#">Admin <span class="sr-only flutuacao-direita">(current)</span></a>
+				<a class="navbar-brand" href="{{link_admin}}">Admin <span class="sr-only flutuacao-direita">(current)</span></a>
 					
 				
 				</div>
@@ -54,14 +54,14 @@
 		<div class="jumbotron  p-md-4 text-white rounded bg-dark ">
 			
 			<div class="logo">
-				<img src="http://localhost/projetos-aline/site_simples/assets/logo.png">
+				<img src="{{URL_BASE}}/assets/logo.png">
 			</div>
 			
 			<div class="col-md-10 titulo"  >
 				
 				<h1 class="display-4 font-italic">Aline Tenório</h1>
 				<p class="lead my-3">Desenvolvimento web com PHP e Laravel</p>
-				<p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Portfólio</a></p>
+				<p class="lead mb-0"><a href="{{link-portfolio}}" class="text-white font-weight-bold">Portfólio</a></p>
 			</div>
 			
 		
@@ -79,77 +79,50 @@
 				<h4>Menu</h4>
 
 				<ul>
-					<li><a href= "http://localhost/projetos-aline/site_simples/busca/php">php</a></li>
-					<li><a href="http://localhost/projetos-aline/site_simples/busca/laravel">laravel</a></li>
+					<li><a href= "{{link_php}}">php</a></li>
+					<li><a href="{{link_laravel}}">laravel</a></li>
 				</ul>
 
 				<hr>
 
 				<ul>
-					<li><a href= "http://localhost/projetos-aline/site_simples/busca/data/feb">fevereiro</a></li>
-					<li><a href= "http://localhost/projetos-aline/site_simples/busca/data/jan">janeiro</a></li>
+					<li><a href= "{{link_feb}}">fevereiro</a></li>
+					<li><a href= "{{link_jan}}">janeiro</a></li>
 				</ul>
 			</div>
 		</div>
 		
 		<footer class="blog-footer">
-        <!-- Rodapé -->
+        <!-- Rodape -->
        
 			<div class="container ">
-				<div class="brand"></div>
-				<div class="p-4"></div>
+				
+				
 				<div class="menus">
 					<div class="row">
-						<div class="col-md-3 col-6">
-							<span>MENU</span>
+						
+						<div class="col-md-4 col-6">
+							
 							<div class="p-2"></div>
-							<ul class="menu">
-								<li><a href="javascript://" data-id="allcontent">Home</a></li>
-								<li><a href="javascript://" data-id="about">Quem sou</a></li>
-								<li><a href="javascript://" data-id="services">O que faço?</a></li>
-								<li><a href="javascript://" data-id="portifolio">Portifólio</a></li>
-								<li><a href="javascript://" data-id="vlog">Vlog</a></li>
-								<li><a href="javascript://" data-id="contact">Contato</a></li>
-							</ul>
-							<div class="p-2"></div>
-						</div>
-						<div class="col-md-3 col-6">
-							<span>REDES SOCIAIS</span>
-							<div class="p-2"></div>
-							<ul>
-								<li><a href="https://www.instagram.com/attekitadev/" target="_blank">Instagram</a></li>
-								<li><a href="https://www.linkedin.com/in/bullas-attekita-681b8632/" target="_blank">LinkedIn</a></li>
-								<li><a href="https://www.youtube.com/channel/UCetRsdZxDQDcgVDJd6erz6g" target="_blank">Youtube</a></li>
-							</ul>
+							
+								<a href="{{link_git}}" target="_blank">GITHUB</a></li>
+								
 							<div class="p-2"></div>
 						</div>
 						<div class="col-md-6">
 							<div class="contact-info">
-								<div class="row">
-									<div class="col-md-6 col-sm-6 col-6">
-										<div class="label">
-											<div class="icon"><i class="fas fa-phone"></i></div>
-											TELEFONE DE<br>
-											ATENDIMENTO                                    </div>
-									</div>
-									<div class="col-md-6 col-sm-6 col-6">
-										<div class="phone">
-											<a href="">62 99985 7444</a>
-										</div>
-									</div>
-								</div>
+								
 								<div class="p-2"></div>
 								<div class="row">
 									<div class="col-md-6 col-sm-6 col-6">
 										<div class="label">
 											<div class="icon"><i class="fas fa-envelope"></i></div>
-											E-MAIL PARA<br>
-											CONTATO                                    </div>
+											#@gmail.com                                   </div>
 									</div>
 									<div class="col-md-6 col-sm-6 col-6">
 										<div class="mail">
-											<b>CONTATO</b>
-											@attekita.com                                    </div>
+											
+											(87) 00000-0000                                  </div>
 									</div>
 								</div>
 							</div>
@@ -158,8 +131,8 @@
 				</div>
 				<div class="p-4"></div>
 				<div class="credits">
-					Copyright © 2018 Attekita Dev            </div>
-				<div class="p-4"></div>
+					Copyright © 2020 ###            </div>
+				
 			</div>
         <!-- Rodapé -->
     </footer>

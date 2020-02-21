@@ -14,31 +14,18 @@ endif;
 #No index.php serão feitos todos os imports dos arquivos php
 
 ##VER AUTOLOAD DOC OMPOOSER
-require_once 'app/Controller/HomeController.php';
-require_once 'app/Controller/ErroController.php';
-require_once 'app/Controller/PostagemController.php';
-require_once 'app/Controller/SobreController.php';
-require_once 'app/Controller/BuscaController.php';
-require_once 'app/Controller/AdminController.php';
-require_once 'app/Model/Postagem.php';
-require_once 'app/Model/Comentario.php';
-require_once 'app/Model/Login.php';
-require_once 'lib/Database/Conexao.php';
-require_once 'app/Config.php';
+spl_autoload_register(function ($class_name) {
+    include  $class_name . '.php';
+});
 
 #Composer(dependency manager) handles autoloading automatically,  the following line of code
 # 	will allow you to load all your referenced packages:
 require_once 'vendor/autoload.php';
+require_once 'app/Config.php';
 
 use CoffeeCode\Router\Router;
-#use app\Controller\HomeController;
+use app\Controller\EstruturaController;
 
-#Lê o arquivo passado e o retorna como string
-if( isset($_SESSION['usuario'])){
-	$template = file_get_contents('app/Template/estrutura_admin.html');
-}else{
-	$template = file_get_contents('app/Template/estrutura_visitante.html');
-}
 
 #ob_start: Ativa o output buffering. Salva tudo que normalmente seria printado na tela
 #	->Start remembering everything that would normally be outputted, 
@@ -78,7 +65,7 @@ ob_start();
 	$router->get("/", "AdminController:index", "admin.index");
 	$router->get("/loginView", "AdminController:loginView", "admin.loginView");
 	$router->post("/login", "AdminController:login");
-	$router->get("/logout", "AdminController:logout");
+	$router->get("/logout", "AdminController:logout", "admin.logout");
 	$router->get("/create", "AdminController:create", "admin.create");
 	$router->post("/insert", "AdminController:insert");
 	$router->get("/updateView/{id}", "AdminController:updateView", "admin.updateView");
@@ -98,10 +85,14 @@ ob_start();
 	$saida = ob_get_contents();
 ob_end_clean();
 
-#procura a string {{area_dinamica}} no estrutura.html, e o substitui pela saída
-#gerada pelo buffer.
-$template_pronto = str_replace('{{area_dinamica}}', $saida, $template);
-$template_pronto = str_replace('{{link_home}}', $router->route('home.index'), $template_pronto);
+#Lê o arquivo passado e o retorna como string
+if( isset($_SESSION['usuario'])){
 
-echo $template_pronto;
+	$template = (new EstruturaController($router))->index($saida, 'admin');
+
+}else{
+	$template = (new EstruturaController($router))->index($saida, 'visitor');
+}
+
+echo $template;
 

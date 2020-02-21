@@ -18,26 +18,36 @@
 	<body>
 		<div id="menu">
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand" href="#">Carousel</a>
+				<a class="navbar-brand" href="{{link_home}}">Home</a>
+
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
+				 
 				  <ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-					  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					  <a class="nav-link" href="{{link_php}}">PHP <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link" href="#">Link</a>
+					<li class="nav-item active">
+					  <a class="nav-link" href="{{link_laravel}}">Laravel <span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-					  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					<li class="nav-item active">
+					  <a class="nav-link" href="{{link_portfolio}}">Portfólio <span class="sr-only">(current)</span></a>
 					</li>
-				  </ul>
-				  <form class="form-inline mt-2 mt-md-0">
-					<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				  </form>
+					<li class="nav-item active">
+					  <a class="nav-link" href="{{link_contato}}">Contato <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item active">
+					  <a class="nav-link" href="{{link_sobre}}">Sobre <span class="sr-only">(current)</span></a>
+					</li>
+
+				</ul>
+				<a class="navbar-brand" href="{{link_sair}}">Sair <span class="sr-only flutuacao-direita">(current)</span></a>
+
+				<a class="navbar-brand" href="{{link_admin}}">Admin <span class="sr-only flutuacao-direita">(current)</span></a>
+					
+				
 				</div>
 			  </nav>
 		</div>
@@ -54,19 +64,6 @@
 
 		<div class="meio">
 			<div class="corpo">
-					<div class="topo">
-						<header>
-							<nav>
-								<a href="http://localhost/projetos-aline/site_simples/">Home</a>
-								<a href="http://localhost/projetos-aline/site_simples/sobre">Sobre</a>
-								<a href="http://localhost/projetos-aline/site_simples/admin/loginView" class="flutuacao-direita"> Admin</a>
-								<a href="http://localhost/projetos-aline/site_simples/admin/logout" class="flutuacao-direita"> Sair</a>
-								
-
-							</nav>
-						</header>
-					</div>
-					
 
 					<div class="conteudo">
 						{{area_dinamica}}
@@ -76,77 +73,50 @@
 				<h4>Menu</h4>
 
 				<ul>
-					<li><a href= "http://localhost/projetos-aline/site_simples/busca/php">php</a></li>
-					<li><a href="http://localhost/projetos-aline/site_simples/busca/laravel">laravel</a></li>
+					<li><a href= "{{link_php}}">php</a></li>
+					<li><a href="{{link_laravel}}">laravel</a></li>
 				</ul>
 
 				<hr>
 
 				<ul>
-					<li><a href= "http://localhost/projetos-aline/site_simples/busca/data/feb">fevereiro</a></li>
-					<li><a href= "http://localhost/projetos-aline/site_simples/busca/data/jan">janeiro</a></li>
+					<li><a href= "{{link_feb}}">fevereiro</a></li>
+					<li><a href= "{{link_jan}}">janeiro</a></li>
 				</ul>
 			</div>
 		</div>
 		
 		<footer class="blog-footer">
-        <!-- Rodapé -->
+        <!-- Rodape -->
        
 			<div class="container ">
-				<div class="brand"></div>
-				<div class="p-4"></div>
+				
+				
 				<div class="menus">
 					<div class="row">
-						<div class="col-md-3 col-6">
-							<span>MENU</span>
+						
+						<div class="col-md-4 col-6">
+							
 							<div class="p-2"></div>
-							<ul class="menu">
-								<li><a href="javascript://" data-id="allcontent">Home</a></li>
-								<li><a href="javascript://" data-id="about">Quem sou</a></li>
-								<li><a href="javascript://" data-id="services">O que faço?</a></li>
-								<li><a href="javascript://" data-id="portifolio">Portifólio</a></li>
-								<li><a href="javascript://" data-id="vlog">Vlog</a></li>
-								<li><a href="javascript://" data-id="contact">Contato</a></li>
-							</ul>
-							<div class="p-2"></div>
-						</div>
-						<div class="col-md-3 col-6">
-							<span>REDES SOCIAIS</span>
-							<div class="p-2"></div>
-							<ul>
-								<li><a href="https://www.instagram.com/attekitadev/" target="_blank">Instagram</a></li>
-								<li><a href="https://www.linkedin.com/in/bullas-attekita-681b8632/" target="_blank">LinkedIn</a></li>
-								<li><a href="https://www.youtube.com/channel/UCetRsdZxDQDcgVDJd6erz6g" target="_blank">Youtube</a></li>
-							</ul>
+							
+								<a href="{{link_git}}" target="_blank">GITHUB</a></li>
+								
 							<div class="p-2"></div>
 						</div>
 						<div class="col-md-6">
 							<div class="contact-info">
-								<div class="row">
-									<div class="col-md-6 col-sm-6 col-6">
-										<div class="label">
-											<div class="icon"><i class="fas fa-phone"></i></div>
-											TELEFONE DE<br>
-											ATENDIMENTO                                    </div>
-									</div>
-									<div class="col-md-6 col-sm-6 col-6">
-										<div class="phone">
-											<a href="">62 99985 7444</a>
-										</div>
-									</div>
-								</div>
+								
 								<div class="p-2"></div>
 								<div class="row">
 									<div class="col-md-6 col-sm-6 col-6">
 										<div class="label">
 											<div class="icon"><i class="fas fa-envelope"></i></div>
-											E-MAIL PARA<br>
-											CONTATO                                    </div>
+											#@gmail.com                                   </div>
 									</div>
 									<div class="col-md-6 col-sm-6 col-6">
 										<div class="mail">
-											<b>CONTATO</b>
-											@attekita.com                                    </div>
+											
+											(87) 00000-0000                                  </div>
 									</div>
 								</div>
 							</div>
@@ -155,9 +125,9 @@
 				</div>
 				<div class="p-4"></div>
 				<div class="credits">
-					Copyright © 2018 Attekita Dev            </div>
-				<div class="p-4"></div>
-			
+					Copyright © 2020 ###            </div>
+				
+			</div>
         <!-- Rodapé -->
     </footer>
 		</div>

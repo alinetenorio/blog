@@ -13,39 +13,47 @@
 			$this->router = $router;
 		}
 
-		public function index(){
+		public function index($saida, $ator){
 			
-			#twig: template engine para php. 
-			#{{...}}: output; {%...%}: executar comandos
-			#template engine: biblioteca que combina templates e modelos de dados,
-			#são definidas partes estáticas e dinâmicas do app
-			
-			#os templates do folder View sao carregados para um environment criado
-			$loader = new \Twig\Loader\FilesystemLoader('app/View');
-			$twig = new \Twig\Environment($loader);
-			
-			$template = $twig->load('home.html');
-				
-			try{
-				$colecaoPostagem = Postagem::selecionarTodos();
+			if($ator == 'admin'){
+				$template = file_get_contents('app/Template/estrutura_admin.html');
 
-				$parametros = array();
-				$parametros['postagens'] = $colecaoPostagem;
-				   
-				#render: renderiza o template com os $parametros
-				$conteudo = $template->render($parametros);
-
-				echo $conteudo;
-
-				
-			}catch(\Exception $e){
-				#render: renderiza o template e mostra mensagem de erro
-				$conteudo = $template->render();
-				echo $conteudo;
-				echo $e->getMessage();
+				$template = str_replace('{{link_sair}}', $this->router->route('admin.logout'), $template);
+			}else{
+				$template = file_get_contents('app/Template/estrutura_visitante.html');
 			}
 
+			$template = str_replace('{{URL_BASE}}', URL_BASE, $template);
 
+
+			$template = str_replace('{{area_dinamica}}', $saida, $template);
+
+			$template = str_replace('{{link_home}}', $this->router->route('home.index'), $template);
+
+			$template = str_replace('{{link_php}}', $this->router->route('busca.index', ['tag'=>'php']), $template);
+
+			$template = str_replace('{{link_laravel}}', $this->router->route('busca.index', ['tag'=>'laravel']), $template);
+
+			//$template = str_replace('{{link_portfolio}}', $this->router->route('portfolio.index'), $template);
+
+			//$template = str_replace('{{link_contato}}', $this->router->route('contato.index'), $template);
+
+			$template = str_replace('{{link_sobre}}', $this->router->route('sobre.index'), $template);
+
+			$template = str_replace('{{link_admin}}', $this->router->route('admin.index'), $template);
+
+			$template = str_replace('{{link_jan}}', $this->router->route('busca.data', ['tag'=>'jan']), $template);
+
+			$template = str_replace('{{link_feb}}', $this->router->route('busca.data', ['tag'=>'feb']), $template);
+
+			return $template;
+
+		
+
+		}
+
+		public function admin($saida){
+			
 		}
 		
 	}
