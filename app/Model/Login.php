@@ -36,23 +36,5 @@
 			return $resultado;
 		}
 
-		public static function logout($id){
-			$conexao = Conexao::getConexao();
-
-			$sql = "SELECT * FROM postagem WHERE id= :id";
-			$sql = $conexao->prepare($sql);
-			$sql->bindValue(':id', $id);
-			$sql->execute();
-
-			$resultado = $sql->fetchObject(Postagem::class);
-
-			if(!$resultado){
-				throw new Exception("Não foi encontrado esse registro");
-			}
-
-			return $resultado;
-		}
-
-	
 
 	}
